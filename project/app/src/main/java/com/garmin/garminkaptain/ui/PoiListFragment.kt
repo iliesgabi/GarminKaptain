@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.garmin.garminkaptain.R
 import com.garmin.garminkaptain.data.PointOfInterest
+import com.garmin.garminkaptain.data.Review
 import com.garmin.garminkaptain.data.poiList
 
 class PoiListFragment : Fragment(R.layout.poi_list_fragment) {

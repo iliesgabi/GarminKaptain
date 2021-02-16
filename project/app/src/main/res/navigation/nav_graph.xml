@@ -24,14 +24,26 @@
             android:name="poiId"
             android:defaultValue="-1L"
             app:argType="long" />
+        <action
+            android:id="@+id/action_poiDetailsFragment_to_poiReviewListFragment"
+            app:destination="@id/poiReviewListFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/poiMapFragment"
         android:name="com.garmin.garminkaptain.ui.PoiMapFragment"
-        android:label="PoiMapFragment">
+        android:label="PoiMapFragment" >
         <action
             android:id="@+id/action_poiMapFragment_to_poiDetailsFragment"
             app:destination="@id/poiDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiReviewListFragment"
+        android:name="com.garmin.garminkaptain.ui.PoiReviewListFragment"
+        android:label="PoiReviewListFragment" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="-1L" />
     </fragment>
 </navigation>

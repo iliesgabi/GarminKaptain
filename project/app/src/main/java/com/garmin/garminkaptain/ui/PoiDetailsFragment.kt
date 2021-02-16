@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.garmin.garminkaptain.R
 import com.garmin.garminkaptain.TAG
@@ -45,12 +47,16 @@ class PoiDetailsFragment : Fragment() {
             view.apply {
                 findViewById<TextView>(R.id.poi_name_view).text = poi.name
                 findViewById<TextView>(R.id.poi_type_view).text = poi.poiType
-                findViewById<TextView>(R.id.poi_rating_view).text =
-                    getString(R.string.label_rating, poi.reviewSummary.averageRating)
+                findViewById<RatingBar>(R.id.poi_num_rating_stars).rating = poi.reviewSummary.averageRating.toFloat()
                 findViewById<TextView>(R.id.poi_num_reviews_view).text =
                     getString(R.string.label_num_reviews, poi.reviewSummary.numberOfReviews)
-                findViewById<Button>(R.id.poi_view_reviews_button).isEnabled =
-                    poi.reviewSummary.numberOfReviews > 0
+                val button = findViewById<Button>(R.id.poi_view_reviews_button)
+                button.isEnabled = poi.reviewSummary.numberOfReviews > 0
+                button.setOnClickListener {
+                    findNavController().navigate(
+                        PoiDetailsFragmentDirections.actionPoiDetailsFragmentToPoiReviewListFragment(poi.id)
+                    )
+                }
             }
         }
     }
